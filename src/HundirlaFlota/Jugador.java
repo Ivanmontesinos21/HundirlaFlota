@@ -2,6 +2,8 @@ package HundirlaFlota;
 
 import java.util.Scanner;
 
+import static HundirlaFlota.Tableros.imprimirTablerosJugador;
+
 public class Jugador {
 
 
@@ -9,14 +11,12 @@ public class Jugador {
         Scanner scanner = new Scanner(System.in);
         char[][] tableroJugador = crearTableroVacio();
         char[][] tableroDisparos = crearTableroVacio();
-        char[][] tableroPC = crearTableroVacio();
-        char[][] tableroDisparosPc = crearTableroVacio();
 
 
-        int[] barcos = {5, 4, 3, 2, 1};
 
-        imprimirTablerosJugador(tableroJugador,tableroDisparos);
-        colocarBarcosJugador(tableroJugador,barcos);
+        int[] barcos = { 4, 3, 2, 1};
+
+
 
 
 
@@ -29,7 +29,7 @@ public class Jugador {
             int barcosColocados = 0;
 
             while (barcosColocados < i + 1) {
-                System.out.println("Coloca un barco de longitud " + longitud + " del tipo " + (i + 1));
+                System.out.println("Coloca un barco de longitud " + longitud );
                 String coordenada = Coordenada.getCoordenada();
                 System.out.println("¿Horizontal [H] o vertical [V]");
                 String orientacion = sc.next().toUpperCase();
@@ -41,12 +41,13 @@ public class Jugador {
                     if (!hayColisionJugador(tablero, longitud, coordenada, orientacion)) {
                         colocarBarco(tablero, longitud, fila, columna, orientacion.charAt(0));
                         barcosColocados++;
-                        imprimirTableroJugador(tablero);
+                     Tableros.imprimirTablerosJugador(tablero,tablero);
+
                     } else {
                         System.out.println("No se puede colocar el barco debido a colisiones.");
                     }
                 } else {
-                    System.out.println("La orientación ingresada no es válida o no hay espacio suficiente. Ingresa 'H' para horizontal o 'V' para vertical.");
+                    System.out.println("La orientación ingresada no hay espacio suficiente. Ingresa 'H' para horizontal o 'V' para vertical.");
                 }
             }
         }
@@ -65,53 +66,14 @@ public class Jugador {
     }
 
     public static void imprimirTableroJugador(char[][] tableroJugador) {
-        System.out.print("   ");
-        for (int i = 0; i < tableroJugador.length; i++) {
-            System.out.print(i + " ");
-        }
-        System.out.print("       ");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(i + " ");
-        }
-        System.out.println("     ");
-
-        // Imprimir tablero 1 y tablero 2 lado a lado
-        for (int j = 0; j < tableroJugador.length; j++) {
-            System.out.print((char) ('A' + j) + "  ");
-            for (int i = 0; i < tableroJugador.length; i++) {
-                System.out.print(tableroJugador[j][i] + " ");
-            }
+      for (int i=0;i<tableroJugador.length;i++)
+          for (int j=0;j<tableroJugador[0].length;j++)
+              System.out.print(tableroJugador[i][j] +"");
 
         }
-    }
-    public static void imprimirTablerosJugador(char[][] tableroJugador, char[][] tableroDisparos) {
 
-        System.out.println("\t" + "Tablero Jugador " + "\t\t\t" + "Tablero Disparos");
-        // Imprimir encabezado con números
-        System.out.print("   ");
-        for (int i = 0; i < tableroJugador.length; i++) {
-            System.out.print(i + " ");
-        }
-        System.out.print("       ");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(i + " ");
-        }
-        System.out.println("     ");
 
-        // Imprimir tablero 1 y tablero 2 lado a lado
-        for (int j = 0; j < tableroJugador.length; j++) {
-            System.out.print((char) ('A' + j) + "  ");
-            for (int i = 0; i < tableroJugador.length; i++) {
-                System.out.print(tableroJugador[j][i] + " ");
-            }
-            System.out.print("    "); // Espacio entre tableros
-            System.out.print((char) ('A' + j) + "  ");
-            for (int i = 0; i < 10; i++) {
-                System.out.print(tableroDisparos[j][i] + " ");
-            }
-            System.out.println();
-        }
-    }
+
 
 
 
@@ -146,7 +108,7 @@ public class Jugador {
 
 
     public static boolean checkOrientacion(String orientacion) {
-        return orientacion.charAt(0) == 'H' || orientacion.charAt(1) == 'V';
+        return orientacion.charAt(0) == ('H') || orientacion.charAt(0) == ('V');
     }
 
 
@@ -199,6 +161,14 @@ public class Jugador {
         }
 
         return true;
+    }
+    public static int fila(){
+        String orientacionLetra="";
+        return Integer.parseInt(String.valueOf((orientacionLetra).charAt(0)=='H'));
+    }
+    public static int columna(){
+        String orientacionNumero="";
+        return Integer.parseInt(String.valueOf((orientacionNumero).charAt(0)=='V'));
     }
 
 

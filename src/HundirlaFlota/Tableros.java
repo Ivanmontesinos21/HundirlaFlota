@@ -9,8 +9,7 @@ public class Tableros {
 
 
         // Imprimir los tableros
-        imprimirTablerosJugador(tableroJugador, tableroDisparos);
-        imprimirTablerosPC(tableroPC, tableroDisparosPc);
+
 
     }
 
@@ -24,6 +23,29 @@ public class Tableros {
         }
         return tablero;
     }
+    public static void imprimirtablero(char[][]tablero) {
+        System.out.print(" ");
+
+        for (int i = 0; i < tablero.length; i++) {
+            System.out.print(""+(i +1) + " ");
+
+        }
+        System.out.println();
+
+        for (int i = 0; i < tablero.length; i++) {
+
+            System.out.print((char)('A'+i) + " ");
+
+            for (int j=0;j<tablero.length;j++){
+                System.out.print(tablero[i][j]+ " ");
+            }
+            System.out.println();
+        }
+
+
+
+            }
+
 
 
     // Método para imprimir los tableros
@@ -35,8 +57,9 @@ public class Tableros {
         for (int i = 0; i < tableroJugador.length; i++) {
             System.out.print(i + " ");
         }
+
         System.out.print("       ");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < tableroJugador.length; i++) {
             System.out.print(i + " ");
         }
         System.out.println("     ");
@@ -54,6 +77,35 @@ public class Tableros {
             }
             System.out.println();
         }
+    }
+        public static void imprimirTablerosJugadorPC(char[][] tableroJugador, char[][] tableroPC) {
+
+            System.out.println("\t" + "Tablero Jugador " + "\t\t\t" + "Tablero Disparos");
+            // Imprimir encabezado con números
+            System.out.print("   ");
+            for (int i = 0; i < tableroJugador.length; i++) {
+                System.out.print(i + " ");
+            }
+
+            System.out.print("       ");
+            for (int i = 0; i < tableroJugador.length; i++) {
+                System.out.print(i + " ");
+            }
+            System.out.println("     ");
+
+            // Imprimir tablero 1 y tablero 2 lado a lado
+            for (int j = 0; j < tableroJugador.length; j++) {
+                System.out.print((char) ('A' + j) + "  ");
+                for (int i = 0; i < tableroJugador.length; i++) {
+                    System.out.print(tableroJugador[j][i] + " ");
+                }
+                System.out.print("    "); // Espacio entre tableros
+                System.out.print((char) ('A' + j) + "  ");
+                for (int i = 0; i < 10; i++) {
+                    System.out.print(tableroPC[j][i] + " ");
+                }
+                System.out.println();
+            }
 
 
         }

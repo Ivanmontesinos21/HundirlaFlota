@@ -15,12 +15,7 @@ public class Entrada {
 
 
     }
-    public static String pedirCoordenada(String msg){
-        Scanner sc=new Scanner(System.in);
-        System.out.println(msg);
-        while (!sc.hasNext())
-            System.out.print("Introduce la cantidad de barcos");
-        return sc.next();
-    }
+
+
 
 }

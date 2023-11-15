@@ -10,10 +10,10 @@ public class PC {
         public static void main(String[] args) {
             char[][] tableroPC = crearTablero();
             char[][] tableroDisparosPc = crearTablero();
-            int[] barcos = {5, 4, 3, 3, 2};
+            int[] barcos = { 4, 3, 3, 2};
 
-            colocarBarcosAleatoriosPC(tableroPC, barcos);
-            imprimirTablerosPC(tableroPC,tableroDisparosPc);
+
+
         }
 
     public static void colocarBarcosAleatoriosPC(char[][] tablero, int[] barcos) {
@@ -30,7 +30,9 @@ public class PC {
                         && !hayColisionPC(tablero, longitud, fila, columna, orientacion)) {
                     colocarBarcoPC(tablero, longitud, fila, columna,(orientacion));
                     colocado = true;
+
                 }
+                Tableros.imprimirTablerosPC(tablero,tablero);
             }
         }
     }
@@ -130,7 +132,7 @@ public class PC {
 
 
 
-    // Resto de tus métodos
+
     }
 
 
