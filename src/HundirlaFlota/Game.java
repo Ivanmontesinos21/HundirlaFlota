@@ -1,6 +1,11 @@
 package HundirlaFlota;
 
+import static HundirlaFlota.PC.colocarBarcosAleatoriosPC;
 import static HundirlaFlota.Tableros.crearTablero;
+import static HundirlaFlota.Tableros.imprimirTablerosJugador;
+import  static HundirlaFlota.Tableros.imprimirTablerosPC;
+import static HundirlaFlota.Jugador.colocarBarcosJugador;
+
 
 public class Game {
     public static void main(String[] args) {
@@ -9,18 +14,16 @@ public class Game {
         char[][] tableroPC = crearTablero();
         char[][] tableroDisparosPc = crearTablero();
         int[] barcos = {  4,3,2, 1};
-
-        Tableros.imprimirTablerosJugador(tableroJugador,tableroDisparos);
-
-     Tableros.imprimirTablerosPC(tableroPC,tableroDisparosPc);
+        imprimirTablerosJugador(tableroJugador,tableroDisparos);
+        imprimirTablerosPC(tableroPC,tableroDisparosPc);
+        colocarBarcosJugador(tableroJugador,barcos);
+      imprimirTablerosJugador(tableroJugador,tableroDisparos);
         System.out.println();
-       Jugador.colocarBarcosJugador(tableroJugador,barcos);
-      Tableros.imprimirTablerosJugador(tableroJugador,tableroDisparos);
-     System.out.println("Los barcos han sido colocados");
-        PC.colocarBarcosAleatoriosPC(tableroPC,barcos);
-        Tableros.imprimirTablerosPC(tableroPC,tableroDisparosPc);
-        Jugador.disparoJugador(tableroDisparos,tableroPC,Jugador.fila(),Jugador.columna());
-        PC.disparoPC(tableroDisparosPc,tableroJugador);
+        System.out.println();
+        System.out.println();
+        colocarBarcosAleatoriosPC(tableroPC,barcos);
+
+
 
     }
 }

@@ -10,13 +10,14 @@ public class PC {
         public static void main(String[] args) {
             char[][] tableroPC = crearTablero();
             char[][] tableroDisparosPc = crearTablero();
-            int[] barcos = { 4, 3, 3, 2};
+            int[] barcos = { 4, 3, 2, 1};
 
-
+                imprimirTablerosPC(tableroPC,tableroDisparosPc);
+                colocarBarcosAleatoriosPC(tableroPC,barcos);
 
         }
 
-    public static void colocarBarcosAleatoriosPC(char[][] tablero, int[] barcos) {
+    public static void colocarBarcosAleatoriosPC(char[][] tableroPC, int[] barcos) {
         for (int i = 0; i < barcos.length; i++) {
             int longitud = barcos[i];
             boolean colocado = false;
@@ -26,13 +27,13 @@ public class PC {
                 int columna = (int) (Math.random() * 10);  // Generar columna aleatoria
                 String orientacion = (Math.random() < 0.5) ? "H" : "V";  // Generar orientación aleatoria
 
-                if (cabeBarcoPC(tablero, longitud, fila, columna, orientacion)
-                        && !hayColisionPC(tablero, longitud, fila, columna, orientacion)) {
-                    colocarBarcoPC(tablero, longitud, fila, columna,(orientacion));
+                if (cabeBarcoPC(tableroPC, longitud, fila, columna, orientacion)
+                        && !hayColisionPC(tableroPC, longitud, fila, columna, orientacion)) {
+                    colocarBarcoPC(tableroPC, longitud, fila, columna,(orientacion));
                     colocado = true;
 
                 }
-                Tableros.imprimirTablerosPC(tablero,tablero);
+                Tableros.imprimirTablerosPC(tableroPC,tableroPC);
             }
         }
     }

@@ -11,16 +11,13 @@ public class Jugador {
         Scanner scanner = new Scanner(System.in);
         char[][] tableroJugador = crearTableroVacio();
         char[][] tableroDisparos = crearTableroVacio();
+        imprimirTablerosJugador(tableroJugador,tableroDisparos);
 
-
-
-        int[] barcos = { 4, 3, 2, 1};
-
-
-
-
+        int[] barcos = {4, 3, 2, 1};
+            colocarBarcosJugador(tableroJugador,barcos);
 
     }
+
     public static void colocarBarcosJugador(char[][] tablero, int[] barcos) {
         Scanner sc = new Scanner(System.in);
 
@@ -29,9 +26,9 @@ public class Jugador {
             int barcosColocados = 0;
 
             while (barcosColocados < i + 1) {
-                System.out.println("Coloca un barco de longitud " + longitud );
+                System.out.println("Coloca un barco de longitud " + longitud);
                 String coordenada = Coordenada.getCoordenada();
-                System.out.println("¿Horizontal [H] o vertical [V]");
+                System.out.println("¿Horizontal [H] o vertical [V]?");
                 String orientacion = sc.next().toUpperCase();
 
                 int fila = coordenada.charAt(0) - 'A';
@@ -41,18 +38,17 @@ public class Jugador {
                     if (!hayColisionJugador(tablero, longitud, coordenada, orientacion)) {
                         colocarBarco(tablero, longitud, fila, columna, orientacion.charAt(0));
                         barcosColocados++;
-                     Tableros.imprimirTablerosJugador(tablero,tablero);
+                        Tableros.imprimirTablerosJugador(tablero, tablero);
 
                     } else {
-                        System.out.println("No se puede colocar el barco debido a colisiones.");
+                        System.out.println("El barco que intentas poner va a colisionar . Ponlo en otro espacio");
                     }
                 } else {
-                    System.out.println("La orientación ingresada no hay espacio suficiente. Ingresa 'H' para horizontal o 'V' para vertical.");
+                    System.out.println("Te estas saliendo del tablero.Introducelo en las coordenadas del tablero");
                 }
             }
         }
     }
-
 
 
     public static char[][] crearTableroVacio() {
@@ -66,18 +62,11 @@ public class Jugador {
     }
 
     public static void imprimirTableroJugador(char[][] tableroJugador) {
-      for (int i=0;i<tableroJugador.length;i++)
-          for (int j=0;j<tableroJugador[0].length;j++)
-              System.out.print(tableroJugador[i][j] +"");
+        for (int i = 0; i < tableroJugador.length; i++)
+            for (int j = 0; j < tableroJugador[0].length; j++)
+                System.out.print(tableroJugador[i][j] + "");
 
-        }
-
-
-
-
-
-
-
+    }
 
 
     public static boolean hayColisionJugador(char[][] tablero, int longitud, String coordenada, String orientacion) {
@@ -105,14 +94,9 @@ public class Jugador {
     }
 
 
-
-
     public static boolean checkOrientacion(String orientacion) {
         return orientacion.charAt(0) == ('H') || orientacion.charAt(0) == ('V');
     }
-
-
-
 
 
     public static boolean cabeBarcoJugador(char[][] tablero, int longitudBarco, int fila, int columna, int orientacion) {
@@ -123,7 +107,6 @@ public class Jugador {
 
         }
     }
-
 
 
     public static void colocarBarco(char[][] tablero, int longitudBarco, int fila, int columna, char orientacion) {
@@ -141,6 +124,7 @@ public class Jugador {
             }
         }
     }
+
     public static boolean disparoJugador(char[][] tableroDisparosJugador, char[][] tableroPC, int fila, int columna) {
         char agua = 'A';
         char golpeado = 'X';
@@ -162,13 +146,15 @@ public class Jugador {
 
         return true;
     }
-    public static int fila(){
-        String orientacionLetra="";
-        return Integer.parseInt(String.valueOf((orientacionLetra).charAt(0)=='H'));
+
+    public static int fila() {
+        String orientacionLetra = "";
+        return Integer.parseInt(String.valueOf((orientacionLetra).charAt(0) == 'H'));
     }
-    public static int columna(){
-        String orientacionNumero="";
-        return Integer.parseInt(String.valueOf((orientacionNumero).charAt(0)=='V'));
+
+    public static int columna() {
+        String orientacionNumero = "";
+        return Integer.parseInt(String.valueOf((orientacionNumero).charAt(0) == 'V'));
     }
 
 

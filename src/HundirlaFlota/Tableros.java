@@ -13,7 +13,7 @@ public class Tableros {
 
     }
 
-    // Método para crear un tablero vacío
+    // Método para crear los tableros
     public static char[][] crearTablero() {
         char[][] tablero = new char[10][10];
         for (int i = 0; i < 10; i++) {
@@ -48,7 +48,7 @@ public class Tableros {
 
 
 
-    // Método para imprimir los tableros
+    // Método para imprimir los tableros del Jugador
     public static void imprimirTablerosJugador(char[][] tableroJugador, char[][] tableroDisparos) {
 
         System.out.println("\t" + "Tablero Jugador " + "\t\t\t" + "Tablero Disparos");
@@ -78,37 +78,7 @@ public class Tableros {
             System.out.println();
         }
     }
-        public static void imprimirTablerosJugadorPC(char[][] tableroJugador, char[][] tableroPC) {
-
-            System.out.println("\t" + "Tablero Jugador " + "\t\t\t" + "Tablero Disparos");
-            // Imprimir encabezado con números
-            System.out.print("   ");
-            for (int i = 0; i < tableroJugador.length; i++) {
-                System.out.print(i + " ");
-            }
-
-            System.out.print("       ");
-            for (int i = 0; i < tableroJugador.length; i++) {
-                System.out.print(i + " ");
-            }
-            System.out.println("     ");
-
-            // Imprimir tablero 1 y tablero 2 lado a lado
-            for (int j = 0; j < tableroJugador.length; j++) {
-                System.out.print((char) ('A' + j) + "  ");
-                for (int i = 0; i < tableroJugador.length; i++) {
-                    System.out.print(tableroJugador[j][i] + " ");
-                }
-                System.out.print("    "); // Espacio entre tableros
-                System.out.print((char) ('A' + j) + "  ");
-                for (int i = 0; i < 10; i++) {
-                    System.out.print(tableroPC[j][i] + " ");
-                }
-                System.out.println();
-            }
-
-
-        }
+            //Metodo para imprimir el tablero del PC
         public static void imprimirTablerosPC(char[][] tableroPC,char[][] tableroDisparosPc){
             System.out.println();
             System.out.println("\t\t" + "Tablero PC " + "\t\t\t\t" + "Tablero DisparosPC");
