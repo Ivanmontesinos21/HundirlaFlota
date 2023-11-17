@@ -11,10 +11,10 @@ public class Jugador {
         Scanner scanner = new Scanner(System.in);
         char[][] tableroJugador = crearTableroVacio();
         char[][] tableroDisparos = crearTableroVacio();
-        imprimirTablerosJugador(tableroJugador,tableroDisparos);
+        imprimirTablerosJugador(tableroJugador, tableroDisparos);
 
         int[] barcos = {4, 3, 2, 1};
-            colocarBarcosJugador(tableroJugador,barcos);
+        colocarBarcosJugador(tableroJugador, barcos);
 
     }
 
@@ -25,7 +25,7 @@ public class Jugador {
             int longitud = barcos[i];
             int barcosColocados = 0;
 
-            while (barcosColocados < i + 1) {
+            while (barcosColocados < 1) {
                 System.out.println("Coloca un barco de longitud " + longitud);
                 String coordenada = Coordenada.getCoordenada();
                 System.out.println("¿Horizontal [H] o vertical [V]?");
@@ -38,7 +38,7 @@ public class Jugador {
                     if (!hayColisionJugador(tablero, longitud, coordenada, orientacion)) {
                         colocarBarco(tablero, longitud, fila, columna, orientacion.charAt(0));
                         barcosColocados++;
-                        Tableros.imprimirTablerosJugador(tablero, tablero);
+
 
                     } else {
                         System.out.println("El barco que intentas poner va a colisionar . Ponlo en otro espacio");
@@ -46,6 +46,7 @@ public class Jugador {
                 } else {
                     System.out.println("Te estas saliendo del tablero.Introducelo en las coordenadas del tablero");
                 }
+
             }
         }
     }
@@ -126,8 +127,8 @@ public class Jugador {
     }
 
     public static boolean disparoJugador(char[][] tableroDisparosJugador, char[][] tableroPC, int fila, int columna) {
-        char agua = 'A';
-        char golpeado = 'X';
+        char agua = '~';
+        char impacto = 'X';
 
         // Verificar si ya se ha disparado en esa posición
         if (tableroDisparosJugador[fila][columna] != agua) {
@@ -137,29 +138,19 @@ public class Jugador {
 
         // Realizar el disparo
         if (tableroPC[fila][columna] != agua) {
-            System.out.println("¡Impacto! Barco hundido.");
-            tableroDisparosJugador[fila][columna] = golpeado;
+            System.out.println("¡Impacto!");
+
+            // Marcar como impactado en el tablero de la PC
+            tableroPC[fila][columna] = impacto;
+
+            tableroDisparosJugador[fila][columna] = impacto;
         } else {
             System.out.println("Agua.");
-            tableroDisparosJugador[fila][columna] = agua;
+            tableroDisparosJugador[fila][columna] = impacto;
         }
 
         return true;
     }
-
-    public static int fila() {
-        String orientacionLetra = "";
-        return Integer.parseInt(String.valueOf((orientacionLetra).charAt(0) == 'H'));
-    }
-
-    public static int columna() {
-        String orientacionNumero = "";
-        return Integer.parseInt(String.valueOf((orientacionNumero).charAt(0) == 'V'));
-    }
-
-
 }
-
-
 
 

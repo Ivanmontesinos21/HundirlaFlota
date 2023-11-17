@@ -44,5 +44,40 @@ public class Coordenada {
         }
         return false;
     }
+
+    public static int PedirCoordenadaDisparoLetra() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.print("Introduce la fila (A-J): ");
+            String coordenada = sc.next().toUpperCase();
+
+            if (coordenada.length() == 1 && coordenada.charAt(0) >= 'A' && coordenada.charAt(0) <= 'J') {
+                return coordenada.charAt(0) - 'A';
+            } else {
+                System.out.println("Entrada no válida. Introduce una letra de A a J.");
+
+            }
+
+        }
+    }
+
+    public static int PedirCoordenadaDisparoNumero() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.print("Introduce la columna (0-9): ");
+            if (sc.hasNextInt()) {
+                int columna = sc.nextInt();
+
+                if (columna >= 0 && columna <= 9) {
+                    return columna;
+                } else {
+                    System.out.println("Entrada no válida. Introduce un número de 0 a 9.");
+                }
+
+            }
+        }
+
+
+    }
 }
 

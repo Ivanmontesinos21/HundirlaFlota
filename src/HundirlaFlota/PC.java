@@ -5,17 +5,12 @@ import static HundirlaFlota.Tableros.crearTablero;
 public class PC {
 
 
+    public static void main(String[] args) {
+        char[][] tableroPC = crearTablero();
+        char[][] tableroDisparosPc = crearTablero();
+        int[] barcos = {4, 3, 2, 1};
 
-
-        public static void main(String[] args) {
-            char[][] tableroPC = crearTablero();
-            char[][] tableroDisparosPc = crearTablero();
-            int[] barcos = { 4, 3, 2, 1};
-
-                imprimirTablerosPC(tableroPC,tableroDisparosPc);
-                colocarBarcosAleatoriosPC(tableroPC,barcos);
-
-        }
+    }
 
     public static void colocarBarcosAleatoriosPC(char[][] tableroPC, int[] barcos) {
         for (int i = 0; i < barcos.length; i++) {
@@ -29,14 +24,15 @@ public class PC {
 
                 if (cabeBarcoPC(tableroPC, longitud, fila, columna, orientacion)
                         && !hayColisionPC(tableroPC, longitud, fila, columna, orientacion)) {
-                    colocarBarcoPC(tableroPC, longitud, fila, columna,(orientacion));
+                    colocarBarcoPC(tableroPC, longitud, fila, columna, (orientacion));
                     colocado = true;
 
                 }
-                Tableros.imprimirTablerosPC(tableroPC,tableroPC);
+
             }
         }
     }
+
     public static boolean cabeBarcoPC(char[][] tablero, int longitudBarco, int fila, int columna, String orientacion) {
         if (orientacion.equals("V")) {
             return fila + longitudBarco <= tablero.length;
@@ -45,6 +41,7 @@ public class PC {
         }
         return false;
     }
+
     public static boolean hayColisionPC(char[][] tablero, int longitud, int fila, int columna, String orientacion) {
         char barco = 'B';
 
@@ -64,6 +61,7 @@ public class PC {
 
         return false; // No hay colisión
     }
+
     public static void colocarBarcoPC(char[][] tablero, int longitudBarco, int fila, int columna, String orientacion) {
         char barco = 'B';
 
@@ -77,7 +75,8 @@ public class PC {
             }
         }
     }
-    public static void imprimirTablerosPC(char[][] tableroPC,char[][] tableroDisparosPc){
+
+    public static void imprimirTablerosPC(char[][] tableroPC, char[][] tableroDisparosPc) {
         System.out.println();
         System.out.println("\t\t" + "Tablero PC " + "\t\t\t\t" + "Tablero DisparosPC");
         // Imprimir encabezado con números
@@ -105,36 +104,35 @@ public class PC {
             System.out.println();
         }
     }
+
     public static boolean disparoPC(char[][] tableroDisparosPC, char[][] tableroJugador) {
-        char agua = 'A';
+        char agua = '~';
         char impacto = 'X';
 
-        // Buscar la siguiente posición válida para el disparo
-        for (int i = 0; i < tableroDisparosPC.length; i++) {
-            for (int j = 0; j < tableroDisparosPC[i].length; j++) {
-                // Verificar si ya se ha disparado en esa posición
-                if (tableroDisparosPC[i][j] == agua) {
-                    // Realizar el disparo
-                    if (tableroJugador[i][j] != agua) {
-                        System.out.println("¡La PC ha impactado en tus barcos en la posición "  + "!");
-                        tableroDisparosPC[i][j] = impacto;
-                    } else {
-                        System.out.println("La PC ha disparado al agua en la posición "  + ".");
-                        tableroDisparosPC[i][j] = agua;
-                    }
-                    return true;  // Se realizó el disparo
-                }
+        // Elegir una posición aleatoria
+        int fila = (int) (Math.random() * tableroDisparosPC.length);
+        int columna = (int) (Math.random() * tableroDisparosPC[0].length);
+
+        // Verificar si ya se ha disparado en esa posición
+        if (tableroDisparosPC[fila][columna] == agua) {
+            // Realizar el disparo
+            if (tableroJugador[fila][columna] != agua) {
+                System.out.println("¡La PC ha impactado en tus barcos en la posición " + (char) ('A' + fila) + columna + "!");
+                tableroDisparosPC[fila][columna] = impacto;
+
+                // Marcar como impactado en el tablero del jugador
+                tableroJugador[fila][columna] = impacto;
+            } else {
+                System.out.println("La PC ha disparado al agua en la posición " + (char) ('A' + fila) + columna + ".");
+                tableroDisparosPC[fila][columna] = agua;
             }
+            return true;  // Se realizó el disparo
         }
 
-        return false;  // No hay más posiciones para disparar
+        return false;  // No se realizó el disparo
     }
+}
 
-
-
-
-
-    }
 
 
 

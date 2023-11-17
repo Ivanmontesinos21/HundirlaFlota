@@ -23,28 +23,10 @@ public class Tableros {
         }
         return tablero;
     }
-    public static void imprimirtablero(char[][]tablero) {
-        System.out.print(" ");
-
-        for (int i = 0; i < tablero.length; i++) {
-            System.out.print(""+(i +1) + " ");
-
-        }
-        System.out.println();
-
-        for (int i = 0; i < tablero.length; i++) {
-
-            System.out.print((char)('A'+i) + " ");
-
-            for (int j=0;j<tablero.length;j++){
-                System.out.print(tablero[i][j]+ " ");
-            }
-            System.out.println();
-        }
 
 
 
-            }
+
 
 
 
