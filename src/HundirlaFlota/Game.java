@@ -8,12 +8,12 @@ import static HundirlaFlota.PC.colocarBarcosAleatoriosPC;
 import static HundirlaFlota.PC.disparoPC;
 import static HundirlaFlota.Tableros.crearTablero;
 import static HundirlaFlota.Tableros.imprimirTablerosJugador;
-import  static HundirlaFlota.Tableros.imprimirTablerosPC;
+import static HundirlaFlota.Tableros.imprimirTablerosPC;
 
 
 public class Game {
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         char[][] tableroJugador = crearTablero();
         char[][] tableroDisparos = crearTablero();
         char[][] tableroPC = crearTablero();
@@ -24,11 +24,8 @@ public class Game {
         System.out.println("¡Bienvenido a Hundir la Flota!");
 
 
-
-
-
-            imprimirTablerosJugador(tableroJugador,tableroDisparos);
-            imprimirTablerosPC(tableroPC, tableroDisparosPC);
+        imprimirTablerosJugador(tableroJugador, tableroDisparos);
+        imprimirTablerosPC(tableroPC, tableroDisparosPC);
 
 
         // Colocación de barcos del jugador
@@ -54,8 +51,6 @@ public class Game {
             imprimirTablerosJugador(tableroJugador, tableroDisparos);
 
 
-
-
             // Comprobar si el jugador ha ganado antes de pasar al turno de la PC
             if (!hayBarcos(tableroPC)) {
                 System.out.println("¡Felicidades! Has hundido la flota de la PC. ¡Eres el ganador!");
@@ -65,9 +60,7 @@ public class Game {
             // Turno de la PC
             System.out.println("Turno de la PC:");
             disparoPC(tableroDisparosPC, tableroJugador);
-            PC.imprimirTablerosPC(tableroPC,tableroDisparosPC);
-
-
+            PC.imprimirTablerosPC(tableroPC, tableroDisparosPC);
 
 
             // Comprobar si la PC ha ganado antes de pasar al siguiente turno del jugador
@@ -81,14 +74,6 @@ public class Game {
     }
 
 
-
-
-
-
-
-
-
-
     public static boolean hayBarcos(char[][] tablero) {
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
@@ -99,6 +84,7 @@ public class Game {
         }
         return false;
     }
+
     public static void borrarPantalla() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

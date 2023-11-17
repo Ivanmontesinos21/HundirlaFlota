@@ -1,14 +1,12 @@
 package HundirlaFlota;
 
-import static HundirlaFlota.Tableros.crearTablero;
+
 
 public class PC {
 
 
     public static void main(String[] args) {
-        char[][] tableroPC = crearTablero();
-        char[][] tableroDisparosPc = crearTablero();
-        int[] barcos = {4, 3, 2, 1};
+
 
     }
 
@@ -18,8 +16,8 @@ public class PC {
             boolean colocado = false;
 
             while (!colocado) {
-                int fila = (int) (Math.random() * 10);  // Generar fila aleatoria
-                int columna = (int) (Math.random() * 10);  // Generar columna aleatoria
+                int fila = (int) (Math.random() * 10);  // Generar fila aleatoria entre A-J
+                int columna = (int) (Math.random() * 10);  // Generar columna aleatoria 0-9
                 String orientacion = (Math.random() < 0.5) ? "H" : "V";  // Generar orientación aleatoria
 
                 if (cabeBarcoPC(tableroPC, longitud, fila, columna, orientacion)

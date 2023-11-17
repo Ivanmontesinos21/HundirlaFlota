@@ -2,14 +2,6 @@ package HundirlaFlota;
 
 public class Tableros {
     public static void main(String[] args) {
-        char[][] tableroJugador = crearTablero();
-        char[][] tableroDisparos = crearTablero();
-        char[][] tableroPC = crearTablero();
-        char[][] tableroDisparosPc = crearTablero();
-
-
-        // Imprimir los tableros
-
 
     }
 
@@ -23,11 +15,6 @@ public class Tableros {
         }
         return tablero;
     }
-
-
-
-
-
 
 
     // Método para imprimir los tableros del Jugador
@@ -60,36 +47,37 @@ public class Tableros {
             System.out.println();
         }
     }
-            //Metodo para imprimir el tablero del PC
-        public static void imprimirTablerosPC(char[][] tableroPC,char[][] tableroDisparosPc){
-            System.out.println();
-            System.out.println("\t\t" + "Tablero PC " + "\t\t\t\t" + "Tablero DisparosPC");
-            // Imprimir encabezado con números
-            System.out.print("   ");
-            for (int i = 0; i < 10; i++) {
-                System.out.print(i + " ");
-            }
-            System.out.print("       ");
-            for (int j = 0; j < 10; j++) {
-                System.out.print(j + " ");
-            }
-            System.out.println("     ");
 
-            // Imprimir tablero Pc y TableroDisparosPC lado a lado
-            for (int j = 0; j < 10; j++) {
-                System.out.print((char) ('A' + j) + "  ");
-                for (int i = 0; i < tableroPC.length; i++) {
-                    System.out.print(tableroPC[j][i] + " ");
-                }
-                System.out.print("    "); // Espacio entre tableros
-                System.out.print((char) ('A' + j) + "  ");
-                for (int i = 0; i < 10; i++) {
-                    System.out.print(tableroDisparosPc[j][i] + " ");
-                }
-                System.out.println();
+    //Metodo para imprimir el tablero del PC
+    public static void imprimirTablerosPC(char[][] tableroPC, char[][] tableroDisparosPc) {
+        System.out.println();
+        System.out.println("\t\t" + "Tablero PC " + "\t\t\t\t" + "Tablero DisparosPC");
+        // Imprimir encabezado con números
+        System.out.print("   ");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.print("       ");
+        for (int j = 0; j < 10; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println("     ");
+
+        // Imprimir tablero Pc y TableroDisparosPC lado a lado
+        for (int j = 0; j < 10; j++) {
+            System.out.print((char) ('A' + j) + "  ");
+            for (int i = 0; i < tableroPC.length; i++) {
+                System.out.print(tableroPC[j][i] + " ");
             }
+            System.out.print("    "); // Espacio entre tableros
+            System.out.print((char) ('A' + j) + "  ");
+            for (int i = 0; i < 10; i++) {
+                System.out.print(tableroDisparosPc[j][i] + " ");
+            }
+            System.out.println();
         }
-        }
+    }
+}
 
 
 
