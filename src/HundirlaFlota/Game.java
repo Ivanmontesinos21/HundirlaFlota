@@ -18,7 +18,7 @@ public class Game {
         char[][] tableroDisparos = crearTablero();
         char[][] tableroPC = crearTablero();
         char[][] tableroDisparosPC = crearTablero();
-        int[] barcos = {4, 3, 2, 1};
+        int[] barcos = {4,3, 2, 1};
 
 
         System.out.println("¡Bienvenido a Hundir la Flota!");
@@ -43,6 +43,8 @@ public class Game {
 
         // Comienza la partida
         System.out.println("¡Comienza la partida!");
+        imprimirTablerosJugador(tableroJugador,tableroDisparos);
+        imprimirTablerosPC(tableroPC,tableroDisparosPC);
 
         while (hayBarcos(tableroJugador) && hayBarcos(tableroPC)) {
             // Turno del jugador
@@ -60,7 +62,7 @@ public class Game {
             // Turno de la PC
             System.out.println("Turno de la PC:");
             disparoPC(tableroDisparosPC, tableroJugador);
-            PC.imprimirTablerosPC(tableroPC, tableroDisparosPC);
+            imprimirTablerosPC(tableroPC, tableroDisparosPC);
 
 
             // Comprobar si la PC ha ganado antes de pasar al siguiente turno del jugador

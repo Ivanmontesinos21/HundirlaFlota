@@ -106,13 +106,18 @@ public class PC {
     public static boolean disparoPC(char[][] tableroDisparosPC, char[][] tableroJugador) {
         char agua = '~';
         char impacto = 'X';
+        char fallo='o';
 
         // Elegir una posición aleatoria
         int fila = (int) (Math.random() * tableroDisparosPC.length);
         int columna = (int) (Math.random() * tableroDisparosPC[0].length);
 
         // Verificar si ya se ha disparado en esa posición
-        if (tableroDisparosPC[fila][columna] == agua) {
+        if (tableroDisparosPC[fila][columna] != agua) {
+
+            System.out.println("Ya se ha disparado aqui ");
+            return false;
+        }
             // Realizar el disparo
             if (tableroJugador[fila][columna] != agua) {
                 System.out.println("¡La PC ha impactado en tus barcos en la posición " + (char) ('A' + fila) + columna + "!");
@@ -122,14 +127,15 @@ public class PC {
                 tableroJugador[fila][columna] = impacto;
             } else {
                 System.out.println("La PC ha disparado al agua en la posición " + (char) ('A' + fila) + columna + ".");
-                tableroDisparosPC[fila][columna] = agua;
+                tableroDisparosPC[fila][columna] = fallo;
+                tableroJugador[fila][columna]=fallo;
             }
             return true;  // Se realizó el disparo
         }
 
-        return false;  // No se realizó el disparo
+
     }
-}
+
 
 
 

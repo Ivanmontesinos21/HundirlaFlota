@@ -129,6 +129,7 @@ public class Jugador {
     public static boolean disparoJugador(char[][] tableroDisparosJugador, char[][] tableroPC, int fila, int columna) {
         char agua = '~';
         char impacto = 'X';
+        char fallo='o';
 
         // Verificar si ya se ha disparado en esa posición
         if (tableroDisparosJugador[fila][columna] != agua) {
@@ -146,7 +147,8 @@ public class Jugador {
             tableroDisparosJugador[fila][columna] = impacto;
         } else {
             System.out.println("Agua.");
-            tableroDisparosJugador[fila][columna] = impacto;
+            tableroDisparosJugador[fila][columna] = fallo;
+            tableroPC[fila][columna]=fallo;
         }
 
         return true;
